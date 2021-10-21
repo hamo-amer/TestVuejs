@@ -6,7 +6,7 @@
             <span>Email :  {{person.email}}</span>
             <div className="delete-edit-btns">
                 <i class="fas fa-times" @click="$emit('deletePerson',person.id)"></i>
-                <Edit @editPerson="$emit('editPerson',id,newValue)" :person="person" />
+                <Edit @editPerson="$emit('editPerson')" :person="person" />
             </div>
         </div>
 </template>
@@ -41,23 +41,17 @@ emits:['editPerson']
 }
 
 .avatar {
-  width: 40px;
+  width: 70px;
   margin: 20px;
+  border-radius: 50%;
 }
 
-.delete-edit-btns {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
 
-.delete-edit-btns img {
-  width: 50px;
-  margin: 10px;
-  cursor: pointer;
-}
 .delete-edit{
+  width:50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color:white;
   cursor: pointer;;
 }

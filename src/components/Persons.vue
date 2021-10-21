@@ -13,7 +13,7 @@
         <br/>
         <div class="list">
         <div class="row" :key="person.id" v-for="person in persons"  >
-           <Person :person="person" @deletePerson="$emit('deletePerson',person.id)" @editPerson="$emit('editPerson',id,newValue)" />
+           <Person :person="person" @deletePerson="$emit('deletePerson',person.id)" @editPerson="$emit('editPerson')" />
         </div>
         </div>
    </div>

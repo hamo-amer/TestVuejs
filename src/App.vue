@@ -48,11 +48,11 @@ export default {
       })
       res.status===200 ? this.persons=this.persons.filter(person=>person.id!==id):alert('Error deleting')
     },
-    async editPerson(edit){
-      const personToUpdate=await this.getPerson(edit.id)
+    async editPerson(id,newValue){
+      const personToUpdate=await this.getPerson(id)
       console.log(personToUpdate)
-      const upDatePerson={...personToUpdate,...edit.newValue}
-      const res=await fetch(`api/persons/${edit.id}`,{
+      const upDatePerson={...personToUpdate,...newValue}
+      const res=await fetch(`api/persons/${id}`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json'
@@ -60,7 +60,8 @@ export default {
         body:JSON.stringify(upDatePerson)
       })
       const data=await res.json()
-      this.persons=this.persons.map(person=>person.id===edit.id ? data:person)
+      console.log(data)
+      this.persons=this.persons.map(person=>person.id===id ? data:person)
     },
     async getPerson(id){
       const res=await fetch(`api/persons/${id}`)
