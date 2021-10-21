@@ -47,7 +47,7 @@ emits:['editPerson']
 }
 
 
-.delete-edit{
+.delete-edit-btns{
   width:50%;
   display: flex;
   justify-content: space-between;
