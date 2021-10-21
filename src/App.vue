@@ -1,4 +1,5 @@
 <template>
+<Filter @search="search($event)" />
 <Header :showAddPerson="showAddPerson" @toggle-add-person="toggleAddPerson"  />
 <div v-if="showAddPerson">
 <AddPerson @addPerson="addPerson" @toggleAddPerson="toggleAddPerson" />
@@ -10,11 +11,12 @@
 import Header from './components/Header.vue'
 import Persons from './components/Persons.vue'
 import AddPerson from './components/AddPerson.vue'
+import Filter from './components/Filter.vue'
 
 export default {
   name: 'App',
   components: {
-   Persons,Header,AddPerson
+   Persons,Header,AddPerson,Filter
   },
   data(){
     return {
@@ -74,6 +76,15 @@ export default {
       const res=await fetch(`api/persons/${id}`)
       const data=await res.json()
       return data
+    },
+    async search(name){
+      if(!name){
+        this.persons=await this.getAllPersons()
+      }
+this.persons=this.persons.filter(person=>
+person.firstName.toLowerCase().includes(name.toLowerCase().trim())||
+person.lastName.toLowerCase().includes(name.toLowerCase().trim())
+)
     }
   },
   async created(){
