@@ -2,9 +2,9 @@
   "persons": [
     {
       "id": 1,
-      "firstName": "Mohamed",
+      "firstName": "amen allah",
       "lastName": "Ben Arbia",
-      "email": "mohamed@gmail.com"
+      "email": "amen@gmail.com"
     },
     {
       "id": 2,
@@ -23,12 +23,6 @@
       "firstName": "Saber",
       "lastName": "Ben Saad",
       "email": "saber@gmail.com"
-    },
-    {
-      "id": 5,
-      "firstName": "Ayoub",
-      "lastName": "Jaziri",
-      "email": "ayoub@gmail.com"
     }
   ]
 }

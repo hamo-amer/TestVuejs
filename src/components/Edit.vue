@@ -37,7 +37,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" @click="onClick" >Save changes</button>
+        <button type="button" class="btn btn-primary" @click="onClick" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
@@ -65,8 +65,7 @@ export default {
                 email:this.email
             }
             
-            this.$emit('editPerson',this.person.id,newValue)
-            console.log(newValue)
+            this.$emit('update-Person',{id:this.person.id,newValue})
         }
     }
     

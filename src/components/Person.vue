@@ -6,7 +6,7 @@
             <span>Email :  {{person.email}}</span>
             <div className="delete-edit-btns">
                 <i class="fas fa-times" @click="$emit('deletePerson',person.id)"></i>
-                <Edit @editPerson="$emit('editPerson')" :person="person" />
+                <Edit @update-Person="$emit('edit-Person',$event)" :person="person" />
             </div>
         </div>
 </template>
@@ -21,7 +21,7 @@ export default {
 components:{
   Edit
 },
-emits:['editPerson']
+emits:['edit-Person']
 }
 
 </script>

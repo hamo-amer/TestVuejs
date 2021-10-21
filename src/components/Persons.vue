@@ -13,7 +13,7 @@
         <br/>
         <div class="list">
         <div class="row" :key="person.id" v-for="person in persons"  >
-           <Person :person="person" @deletePerson="$emit('deletePerson',person.id)" @editPerson="$emit('editPerson')" />
+           <Person :person="person" @deletePerson="$emit('deletePerson',person.id)" @edit-Person="$emit('updatePerson',$event)" />
         </div>
         </div>
    </div>
@@ -29,7 +29,7 @@ export default {
     components:{
         Person
          },
-         emits:['deletePerson','editPerson']
+         emits:['deletePerson','updatePerson']
 }
 </script>
 <style scoped>

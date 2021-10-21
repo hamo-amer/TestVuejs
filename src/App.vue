@@ -3,7 +3,7 @@
 <div v-if="showAddPerson">
 <AddPerson @addPerson="addPerson" @toggleAddPerson="toggleAddPerson" />
 </div>
- <Persons :persons="persons" @deletePerson="deletePerson" @editPerson="editPerson" />
+ <Persons :persons="persons" @deletePerson="deletePerson" @updatePerson="editPerson($event)" />
 </template>
 
 <script>
@@ -48,19 +48,26 @@ export default {
       })
       res.status===200 ? this.persons=this.persons.filter(person=>person.id!==id):alert('Error deleting')
     },
-    async editPerson(id,newValue){
+    async editPerson({id,newValue}){
       const personToUpdate=await this.getPerson(id)
-      console.log(personToUpdate)
-      const upDatePerson={...personToUpdate,...newValue}
+     if(newValue.firstName){
+       personToUpdate.firstName=newValue.firstName
+     }
+     if(newValue.lastName){
+       personToUpdate.lastName=newValue.lastName
+     }
+     if(newValue.email){
+       personToUpdate.email=newValue.email
+     }
       const res=await fetch(`api/persons/${id}`,{
         method:'PUT',
         headers:{
           'Content-Type':'application/json'
         },
-        body:JSON.stringify(upDatePerson)
+        body:JSON.stringify(personToUpdate)
       })
       const data=await res.json()
-      console.log(data)
+     
       this.persons=this.persons.map(person=>person.id===id ? data:person)
     },
     async getPerson(id){
