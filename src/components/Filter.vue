@@ -3,7 +3,7 @@
   <label class="field field_v1">
     <input class="field__input"
     v-model="text"
-    @change="onChange($event)"
+    @input="onChange($event)"
      placeholder="search by firstName or lastName">
     <span class="field__label-wrap">
       <span class="field__label">search</span>

@@ -23,7 +23,7 @@ components:{
 },
 emits:['edit-Person']
 }
-
+// console.log(this.person)
 </script>
 <style>
 .contact-card {

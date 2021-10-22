@@ -45,13 +45,16 @@ export default {
       this.persons=[...this.persons,data]
     },
     async deletePerson(id){
+      if(confirm('Are you sure!')){
       const res=await fetch(`api/persons/${id}`,{
         method:'DELETE'
       })
       res.status===200 ? this.persons=this.persons.filter(person=>person.id!==id):alert('Error deleting')
+    }
     },
     async editPerson({id,newValue}){
       const personToUpdate=await this.getPerson(id)
+      console.log(id)
      if(newValue.firstName){
        personToUpdate.firstName=newValue.firstName
      }
@@ -77,7 +80,7 @@ export default {
       const data=await res.json()
       return data
     },
-    async search(name){
+  async search(name){
       if(!name){
         this.persons=await this.getAllPersons()
       }

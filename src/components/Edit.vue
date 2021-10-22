@@ -10,7 +10,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Person</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -19,16 +19,16 @@
          <form  class="add-form">
     <div class="form-control">
       <label>firstName</label>
-      <input type="text" name="text" v-model="firstName" placeholder="Add firstName" />
+      <input type="text" name="firstName"  v-model="firstName" placeholder="Add firstName" />
     </div>
  
     <div class="form-control">
       <label>lastName</label>
-      <input type="text" name="text" v-model="lastName" placeholder="Add lastName" />
+      <input type="text" name="lastName" v-model="lastName" placeholder="Add lastName" />
     </div>
      <div class="form-control">
       <label>Email</label>
-      <input type="email" name="text" v-model="email" placeholder="Add email" />
+      <input type="email" name="email" v-model="email" placeholder="Add email" />
       
     </div>
 
@@ -64,7 +64,7 @@ export default {
                 lastName:this.lastName,
                 email:this.email
             }
-            
+            console.log(this.person.id)
             this.$emit('update-Person',{id:this.person.id,newValue})
         }
     }
